@@ -1,25 +1,17 @@
 import React from "react";
-import {
-  StyleSheet,
-  SafeAreaView,
-  Button,
-  Alert,
-  Platform,
-  StatusBar,
-} from "react-native";
+import { StyleSheet, Platform, StatusBar } from "react-native";
+import WelcomeScreen from "./app/screens/WelcomeScreen";
 
 export default function App() {
-  return (
-    <SafeAreaView style={styles.container}>
-      <Button
-        color="orange"
-        title="Click Me"
-        onPress={() =>
-          Alert.prompt("My title", "My message", (text) => console.log(text))
-        }
-      />
-    </SafeAreaView>
-  );
+  // useEffect(() => {
+  //   fetch("https://reactnative.dev/movies.json")
+  //     .then((response) => response.json())
+  //     .then((json) => setData(json.movies))
+  //     .catch((error) => console.error(error))
+  //     .finally(() => setLoading(false));
+  // }, []);
+
+  return <WelcomeScreen />;
 }
 
 const styles = StyleSheet.create({
@@ -27,7 +19,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-    // alignItems: "center",
+    alignItems: "center",
     // justifyContent: "center",
   },
 });
