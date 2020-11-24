@@ -1,9 +1,16 @@
 import React from "react";
-import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
 import colors from "../config/colors";
 
-function WelcomeScreen(props) {
+function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground
       style={styles.background}
@@ -13,8 +20,13 @@ function WelcomeScreen(props) {
         <Image style={styles.logo} source={require("../assets/logo-red.png")} />
         <Text>Sell What You Don't Need</Text>
       </View>
-      <View style={[styles.loginButton, styles.buttons]}></View>
-      <View style={[styles.registerButton, styles.buttons]}></View>
+      <View style={[styles.buttonContainer, styles.buttons]}>
+        <Button
+          title="Let's go!"
+          style={styles.buttons}
+          onPress={() => navigation.navigate("ViewImage")}
+        ></Button>
+      </View>
     </ImageBackground>
   );
 }
@@ -29,11 +41,9 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignItems: "center",
   },
-  loginButton: {
+  buttonContainer: {
     backgroundColor: colors.primaryColor,
-  },
-  registerButton: {
-    backgroundColor: colors.secondaryColor,
+    justifyContent: "center",
   },
   logoContainer: {
     position: "absolute",
@@ -43,6 +53,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 100,
     height: 100,
+    marginBottom: 10,
   },
 });
 
